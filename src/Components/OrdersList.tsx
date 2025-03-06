@@ -6,6 +6,7 @@ import OrderCard from "./OrderCard";
 import OrderSkeleton from "./OrderSkeleton";
 import StatusFilter from "./StatusFilter";
 import { translateState } from "../utils/translateState";
+import { FileQuestion } from "lucide-react"; 
 
 export default function OrdersList() {
   const { orders, loading, error } = useOrders();
@@ -69,6 +70,31 @@ export default function OrdersList() {
           {Array(6).fill(0).map((_, index) => (
             <OrderSkeleton key={index} />
           ))}
+        </motion.div>
+      ) : filteredOrders.length === 0 ? (
+        <motion.div
+          className="flex flex-col items-center justify-center mt-10"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+        >
+          <FileQuestion size={80} className="text-gray-500 mb-4 animate-pulse" />
+          <motion.p
+            className="text-lg text-gray-400"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, delay: 0.2 }}
+          >
+            No hay órdenes en <span className="text-blue-400">{translateState(statusFilter)}</span>.
+          </motion.p>
+          <motion.p
+            className="text-gray-500 mt-2"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.3 }}
+          >
+            Intenta seleccionar otro estado o agregar nuevas ordenes.
+          </motion.p>
         </motion.div>
       ) : (
         <motion.div
