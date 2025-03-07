@@ -82,18 +82,20 @@ export default function Dashboard() {
           transition={{ duration: 0.6, delay: 0.6 }}
         >
           <TopList
-            title={
-              <div className="flex items-center gap-2">
-                <Package className="w-5 h-5 text-orange-400" />
-                Categorías Más Vendidas
-              </div>
-            }
-            data={data?.topCategories?.map((category: [string, number]) => ({
-              name: category[0],
-              value: `${category[1].toLocaleString("es-PE")}`,
-            })) || []}
-            loading={loading}
-          />
+  title={
+    <div className="flex items-center gap-2">
+      <Package className="w-5 h-5 text-orange-400" />
+      Categorías Más Vendidas
+    </div>
+  }
+  data={data?.topCategories?.map(([name, count]) => ({
+    name: name.length > 35 ? `${name.substring(0, 32)}...` : name,
+    tooltip: name,
+    value: `${count.toLocaleString("es-PE", { minimumFractionDigits: 0 })} unidades`, 
+  })) || []}
+  loading={loading}
+/>
+
         </motion.div>
       </div>
     </div>
