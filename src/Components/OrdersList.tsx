@@ -44,7 +44,7 @@ export default function OrdersList() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3, delay: 0.1 }}
       >
-        Órdenes de Venta
+        Ordenes de Venta
       </motion.h1>
 
       <div className="flex flex-col md:flex-row gap-4 mb-6">
@@ -87,7 +87,7 @@ export default function OrdersList() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: 0.2 }}
           >
-            No hay órdenes en <span className="text-blue-400">{translateState(statusFilter)}</span>.
+            No hay ordenes en <span className="text-blue-400">{translateState(statusFilter)}</span>.
           </motion.p>
           <motion.p
             className="text-gray-500 mt-2"
@@ -95,7 +95,7 @@ export default function OrdersList() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.3 }}
           >
-            Intenta seleccionar otro estado o agregar nuevas órdenes.
+            Intenta seleccionar otro estado o agregar nuevas ordenes.
           </motion.p>
         </motion.div>
       ) : (
