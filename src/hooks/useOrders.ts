@@ -20,7 +20,7 @@ export default function useOrders() {
       try {
         const response = await axios.get(`${import.meta.env.VITE_API_URL}/orders`);
         setOrders(response.data.orders);
-      } catch (err) {
+      } catch {
         setError("Error al obtener las ordenes de venta.");
       } finally {
         setLoading(false);

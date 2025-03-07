@@ -9,16 +9,18 @@ import { translateState } from "../utils/translateState";
 import { FileQuestion } from "lucide-react"; 
 
 export default function OrdersList() {
-  const { orders, loading, error } = useOrders();
+  const { orders = [], loading, error } = useOrders();
   const [filter, setFilter] = useState<string>("");
   const [statusFilter, setStatusFilter] = useState<string>("");
 
   const containerRef = useRef(null);
 
-  const filteredOrders = orders.filter(order =>
-    order.name.toLowerCase().includes(filter.toLowerCase()) &&
-    (statusFilter === "" || order.state === statusFilter)
-  );
+  const filteredOrders = Array.isArray(orders)
+    ? orders.filter(order =>
+        order.name?.toLowerCase().includes(filter.toLowerCase()) &&
+        (statusFilter === "" || order.state === statusFilter)
+      )
+    : [];
 
   useEffect(() => {
     gsap.fromTo(
@@ -42,7 +44,7 @@ export default function OrdersList() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3, delay: 0.1 }}
       >
-        Ordenes de Venta
+        Órdenes de Venta
       </motion.h1>
 
       <div className="flex flex-col md:flex-row gap-4 mb-6">
@@ -93,7 +95,7 @@ export default function OrdersList() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.3 }}
           >
-            Intenta seleccionar otro estado o agregar nuevas ordenes.
+            Intenta seleccionar otro estado o agregar nuevas órdenes.
           </motion.p>
         </motion.div>
       ) : (
