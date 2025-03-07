@@ -16,7 +16,8 @@
     "lucide-react": "^0.477.0",
     "pru": "file:",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "recharts": "^2.15.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
